@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <g fill="#000000">
+    <!-- A diagonal capsule built without transforms for reliable template rendering. -->
+    <path d="M8 17.5A6.5 6.5 0 1 0 8 30.5A6.5 6.5 0 1 0 8 17.5Z"/>
+    <path d="M25 8.5A6.5 6.5 0 1 0 25 21.5A6.5 6.5 0 1 0 25 8.5Z"/>
+    <path d="M4.96 18.25L21.96 9.25L28.04 20.75L11.04 29.75Z"/>
+    <!-- A small sun completes the in-app leaf / distant-lens brand mark. -->
+    <circle cx="30" cy="5" r="3"/>
+  </g>
+</svg>

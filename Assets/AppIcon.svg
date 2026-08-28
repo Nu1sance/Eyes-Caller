@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="mint" x1="170" y1="100" x2="850" y2="930" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F2FAF0"/>
+      <stop offset="0.58" stop-color="#DCEFE0"/>
+      <stop offset="1" stop-color="#C5E2CE"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="512" y1="178" x2="512" y2="830" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#CDE9EA"/>
+      <stop offset="1" stop-color="#E8F4D5"/>
+    </linearGradient>
+    <linearGradient id="body" x1="408" y1="530" x2="604" y2="765" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF9E8"/>
+      <stop offset="1" stop-color="#F2E5BF"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="155%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="24"/>
+      <feOffset dy="24"/>
+      <feColorMatrix values="0 0 0 0 0.16 0 0 0 0 0.28 0 0 0 0 0.22 0 0 0 .24 0"/>
+      <feBlend in="SourceGraphic"/>
+    </filter>
+    <clipPath id="portalClip">
+      <rect x="166" y="150" width="692" height="700" rx="188"/>
+    </clipPath>
+  </defs>
+
+  <!-- Soft macOS squircle -->
+  <rect x="64" y="48" width="896" height="896" rx="218" fill="#9FBEA8" opacity=".28" filter="url(#shadow)"/>
+  <rect x="64" y="48" width="896" height="896" rx="218" fill="url(#mint)"/>
+  <rect x="82" y="66" width="860" height="860" rx="204" fill="none" stroke="#FFFFFF" stroke-opacity=".62" stroke-width="8"/>
+
+  <!-- A little window toward the horizon -->
+  <g clip-path="url(#portalClip)">
+    <rect x="166" y="150" width="692" height="700" fill="url(#sky)"/>
+
+    <!-- Sun and its soft halo -->
+    <circle cx="700" cy="322" r="104" fill="#F4D98E" opacity=".25"/>
+    <circle cx="700" cy="322" r="78" fill="#F4D98E"/>
+    <circle cx="700" cy="322" r="86" fill="none" stroke="#FFFFFF" stroke-opacity=".68" stroke-width="14"/>
+
+    <!-- Two quiet clouds -->
+    <g fill="#FFFFFF" opacity=".70">
+      <circle cx="350" cy="324" r="29"/>
+      <circle cx="389" cy="310" r="42"/>
+      <circle cx="433" cy="325" r="27"/>
+    </g>
+    <g fill="#FFFFFF" opacity=".43">
+      <circle cx="250" cy="430" r="18"/>
+      <circle cx="277" cy="419" r="28"/>
+      <circle cx="305" cy="431" r="17"/>
+    </g>
+
+    <!-- Layered hills -->
+    <path d="M126 720C232 594 358 570 478 650C586 720 705 662 894 580V900H126Z" fill="#B6D9B7"/>
+    <path d="M126 818C271 716 392 708 524 774C643 834 747 746 900 716V900H126Z" fill="#7EAE8A"/>
+    <path d="M126 872C330 782 518 820 682 920H126Z" fill="#4E7A62" opacity=".62"/>
+
+    <!-- Small dotted line reinforces “looking far” -->
+    <path d="M588 565C640 520 683 486 734 444" fill="none" stroke="#FFFFFF" stroke-opacity=".72" stroke-width="10" stroke-linecap="round" stroke-dasharray="2 30"/>
+
+    <!-- Round lookout friend -->
+    <ellipse cx="508" cy="790" rx="142" ry="34" fill="#3F6955" opacity=".14"/>
+    <circle cx="484" cy="666" r="132" fill="url(#body)"/>
+    <circle cx="399" cy="579" r="47" fill="#E8CFA1"/>
+    <circle cx="530" cy="638" r="12" fill="#29483B"/>
+    <path d="M510 711C535 701 548 688 562 673" fill="none" stroke="#E1C68F" stroke-width="20" stroke-linecap="round"/>
+
+    <!-- Telescope: the dark diagonal remains readable at 16px -->
+    <g transform="rotate(-19 602 593)">
+      <rect x="530" y="567" width="170" height="54" rx="27" fill="#29483B"/>
+      <circle cx="699" cy="594" r="39" fill="#8EC8CE"/>
+      <rect x="726" y="580" width="46" height="28" rx="14" fill="#F4D98E"/>
+      <circle cx="539" cy="594" r="22" fill="#3F6955"/>
+    </g>
+  </g>
+
+  <rect x="166" y="150" width="692" height="700" rx="188" fill="none" stroke="#FFFFFF" stroke-opacity=".76" stroke-width="12"/>
+
+  <!-- One restrained sparkle, matching the completion state -->
+  <path d="M240 224C240 253 226 267 197 267C226 267 240 281 240 310C240 281 254 267 283 267C254 267 240 253 240 224Z" fill="#F4D98E"/>
+</svg>
