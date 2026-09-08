@@ -188,6 +188,9 @@ private struct HeatmapCell: View {
     let count: Int
     let size: CGFloat
 
+    @State private var isHovered = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     var body: some View {
         if entry.isFuture {
             Color.clear
@@ -203,11 +206,30 @@ private struct HeatmapCell: View {
                             lineWidth: entry.isToday ? 1.8 : 1
                         )
                 )
+                .overlay {
+                    Text("\(count)")
+                        .font(.system(size: count >= 100 ? 9 : 11, weight: .bold, design: .rounded))
+                        .foregroundStyle(textColor)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
+                        .opacity(isHovered ? 1 : 0)
+                        .scaleEffect(isHovered || reduceMotion ? 1 : 0.82)
+                        .allowsHitTesting(false)
+                }
                 .frame(width: size, height: size)
                 .shadow(
                     color: entry.isToday ? GardenTheme.sunlight.opacity(0.45) : .clear,
                     radius: 4
                 )
+                .onHover { hovering in
+                    if reduceMotion {
+                        isHovered = hovering
+                    } else {
+                        withAnimation(.easeOut(duration: 0.22)) {
+                            isHovered = hovering
+                        }
+                    }
+                }
                 .help(tooltip)
                 .accessibilityElement(children: .ignore)
                 .accessibilityLabel(tooltip)
@@ -221,6 +243,23 @@ private struct HeatmapCell: View {
         case 2: GardenTheme.activityMedium
         case 3: GardenTheme.activityHigh
         default: GardenTheme.activityPeak
+        }
+    }
+
+    private var textColor: Color {
+        // 当背景是 activityPeak 时：
+        //   白天: activityPeak 是深色 0x3F6955，文字需要浅白色反衬 (0xFFFFFF)
+        //   夜晚: activityPeak 是浅绿亮色 0x94C6A2，文字需要深色反衬 (0x10251E)
+        // 其余档位（0、1、2、3）：
+        //   白天: 背景偏浅色，文字使用深墨色 GardenTheme.ink
+        //   夜晚: 背景为暗青色，文字使用柔和浅青白 GardenTheme.ink
+        if count >= 4 {
+            return Color.adaptive(
+                light: 0xFFFFFF,
+                dark: 0x10251E
+            )
+        } else {
+            return GardenTheme.ink
         }
     }
 
